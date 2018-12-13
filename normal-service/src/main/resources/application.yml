@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: dev
+  freemarker:
+    template-loader-path: classpath:/templates
+    cache: false
+    settings:
+      template_update_delay: 0
+  mvc:
+    static-path-pattern: /static/**
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
