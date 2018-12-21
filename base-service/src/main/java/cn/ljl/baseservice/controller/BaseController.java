@@ -1,5 +1,6 @@
 package cn.ljl.baseservice.controller;
 
+import cn.ljl.baseservice.utils.ResultUtil;
 import cn.ljl.baseservice.vo.Result;
 
 /**
@@ -10,6 +11,23 @@ import cn.ljl.baseservice.vo.Result;
 public class BaseController {
 
     public <T> Result<T> success() {
-        return
+        return ResultUtil.makeOKRsp();
     }
+
+    public <T> Result<T> success(T data) {
+        return ResultUtil.makeOKRsp(data);
+    }
+
+    public <T> Result<T> fail() {
+        return ResultUtil.makeErrRsp();
+    }
+
+    public <T> Result<T> addResult(int code, String msg) {
+        return ResultUtil.makeRsp(code, msg);
+    }
+
+    public <T> Result<T> addResult(int code, String msg, T data) {
+        return ResultUtil.makeRsp(code, msg, data);
+    }
+
 }

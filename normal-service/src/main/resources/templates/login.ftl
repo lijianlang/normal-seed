@@ -14,12 +14,12 @@
         </el-header>
 
         <el-main>
-            <el-form ref="form" :model="form" label-width="80px">
+            <el-form ref="form" :model="loginForm" label-width="80px">
                 <el-form-item label="用户名">
-                    <el-input v-model="form.username" style="width: auto"></el-input>
+                    <el-input v-model="loginForm.username" style="width: auto"></el-input>
                 </el-form-item>
                 <el-form-item label="密码">
-                    <el-input v-model="form.password" style="width: auto"></el-input>
+                    <el-input v-model="loginForm.password" style="width: auto"></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="onSubmit()">登陆</el-button>
@@ -39,5 +39,6 @@
 </body>
 <script src="/static/plugins/vue/vue.min.js"></script>
 <script src="/static/plugins/elementUI/lib/index.js"></script>
+<script src="/static/plugins/axios/axios.min.js"></script>
 <script src="/static/js/login.js"></script>
 </html>
