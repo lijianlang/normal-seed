@@ -1,4 +1,4 @@
-package cn.ljl.normalservice.model;
+package cn.ljl.normalservice.entity;
 
 import lombok.Data;
 

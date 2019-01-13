@@ -1,4 +1,4 @@
-package cn.ljl.baseservice.generator;
+package cn.ljl.baseservice.utils;
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.metadata.TableInfo;
@@ -65,7 +65,7 @@ public class CodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("模块名"));
-        pc.setParent("com.baomidou.ant");
+        pc.setParent("cn.ljl");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -111,10 +111,10 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass("cn.ljl.normalservice.model");
+//        strategy.setSuperEntityClass("cn.ljl.normalservice.model");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
-        strategy.setSuperControllerClass("cn.ljl.normalservice.controller");
+//        strategy.setSuperControllerClass("cn.ljl.normalservice.controller");
         strategy.setInclude(scanner("表名"));
         strategy.setSuperEntityColumns("id");
         strategy.setControllerMappingHyphenStyle(true);

@@ -1,7 +1,6 @@
 package cn.ljl.normalservice.controller;
 
-import cn.ljl.normalservice.mapper.ProductMapper;
-import cn.ljl.normalservice.model.Product;
+import cn.ljl.normalservice.entity.Product;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -21,15 +20,10 @@ import java.util.List;
 @RequestMapping(value = "/login")
 public class LoginController {
 
-    @Autowired
-    private ProductMapper productMapper;
 
     @RequestMapping(value = "/test")
     public void test() {
-        Product product = productMapper.selectByPrimaryKey();
-        Page page = new Page(1L, 10);
-        productMapper.selectPage(page, null);
-        System.out.println("hello");
+
     }
 
     @GetMapping(value = "/login")
