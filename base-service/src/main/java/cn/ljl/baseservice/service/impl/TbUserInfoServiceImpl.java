@@ -1,8 +1,8 @@
-package cn.ljl.normalservice.service.impl;
+package cn.ljl.baseservice.service.impl;
 
-import cn.ljl.normalservice.entity.TbUserInfo;
-import cn.ljl.normalservice.mapper.TbUserInfoMapper;
-import cn.ljl.normalservice.service.ITbUserInfoService;
+import cn.ljl.baseservice.entity.TbUserInfo;
+import cn.ljl.baseservice.mapper.TbUserInfoMapper;
+import cn.ljl.baseservice.service.ITbUserInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

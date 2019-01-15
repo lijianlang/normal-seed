@@ -1,7 +1,5 @@
 package cn.ljl.normalservice;
 
-import cn.ljl.normalservice.entity.TbUserInfo;
-import cn.ljl.normalservice.service.ITbUserInfoService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,17 +13,5 @@ import java.util.List;
 @SpringBootTest
 public class NormalServiceApplicationTests {
 
-
-
-	@Autowired
-	private ITbUserInfoService userInfoService;
-
-	@Test
-	public void contextLoads() {
-		QueryWrapper<TbUserInfo> wrapper = new QueryWrapper<>();
-		wrapper.eq("username", "lijianlang");
-		List<TbUserInfo> userInfoList = userInfoService.list(wrapper);
-		System.out.println(userInfoList);
-	}
 
 }

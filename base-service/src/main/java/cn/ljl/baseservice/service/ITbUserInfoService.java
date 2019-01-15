@@ -1,6 +1,6 @@
-package cn.ljl.normalservice.service;
+package cn.ljl.baseservice.service;
 
-import cn.ljl.normalservice.entity.TbUserInfo;
+import cn.ljl.baseservice.entity.TbUserInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

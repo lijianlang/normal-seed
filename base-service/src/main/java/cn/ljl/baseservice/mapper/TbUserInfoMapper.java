@@ -1,6 +1,6 @@
-package cn.ljl.normalservice.mapper;
+package cn.ljl.baseservice.mapper;
 
-import cn.ljl.normalservice.entity.TbUserInfo;
+import cn.ljl.baseservice.entity.TbUserInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

@@ -1,16 +1,15 @@
-package cn.ljl.normalservice.realm;
+package cn.ljl.baseservice.realm;
 
-import cn.ljl.normalservice.entity.TbUserInfo;
-import cn.ljl.normalservice.service.ITbUserInfoService;
+import cn.ljl.baseservice.entity.TbUserInfo;
+import cn.ljl.baseservice.service.ITbUserInfoService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.HashSet;
 import java.util.List;
@@ -24,6 +23,7 @@ import java.util.Set;
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired
+    @Lazy
     private ITbUserInfoService userInfoService;
 
     /**
@@ -50,12 +50,25 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String username = (String) token.getPrincipal();
+        if (username == null) {  //todo 判空工具
+            throw new AccountException("登陆异常，用户名为空");
+        }
         // todo 根据username找到User
         QueryWrapper<TbUserInfo> wrapper = new QueryWrapper<>();
         wrapper.eq("username", username);
         List<TbUserInfo> userInfoList = userInfoService.list(wrapper);
-
+        if (userInfoList.size() == 0) {
+            throw new UnknownAccountException("未找到用户");
+        }
+        TbUserInfo userInfo = userInfoList.get(0);
+        //查询用户的角色和权限存到SimpleAuthenticationInfo中，这样在其它地方
+        //SecurityUtils.getSubject().getPrincipal()就能拿出用户的所有信息，包括角色和权限
+        TbUserInfo temp = new TbUserInfo();
+        temp.setPassword("123");
+        temp.setUsername("lijianlang");
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(temp, temp.getPassword(), temp.getUsername());
+//        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userInfo, userInfo.getPassword(), userInfo.getUsername());
         // todo 非法判断
-        return null;
+        return info;
     }
 }

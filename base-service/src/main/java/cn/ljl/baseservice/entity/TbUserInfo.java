@@ -1,7 +1,8 @@
-package cn.ljl.normalservice.entity;
+package cn.ljl.baseservice.entity;
+
+import lombok.Data;
 
 import java.time.LocalDateTime;
-import lombok.Data;
 
 /**
  * <p>
