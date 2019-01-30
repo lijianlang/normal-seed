@@ -11,6 +11,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 
+import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,7 +24,6 @@ import java.util.Set;
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired
-    @Lazy
     private ITbUserInfoService userInfoService;
 
     /**
@@ -37,6 +37,7 @@ public class UserRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         //todo  获取用户的角色
         Set<String> roles = new HashSet<>();
+        roles.add("admin");
         authorizationInfo.setRoles(roles);
         return authorizationInfo;
     }
@@ -53,7 +54,6 @@ public class UserRealm extends AuthorizingRealm {
         if (username == null) {  //todo 判空工具
             throw new AccountException("登陆异常，用户名为空");
         }
-        // todo 根据username找到User
         QueryWrapper<TbUserInfo> wrapper = new QueryWrapper<>();
         wrapper.eq("username", username);
         List<TbUserInfo> userInfoList = userInfoService.list(wrapper);
@@ -63,11 +63,7 @@ public class UserRealm extends AuthorizingRealm {
         TbUserInfo userInfo = userInfoList.get(0);
         //查询用户的角色和权限存到SimpleAuthenticationInfo中，这样在其它地方
         //SecurityUtils.getSubject().getPrincipal()就能拿出用户的所有信息，包括角色和权限
-        TbUserInfo temp = new TbUserInfo();
-        temp.setPassword("123");
-        temp.setUsername("lijianlang");
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(temp, temp.getPassword(), temp.getUsername());
-//        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userInfo, userInfo.getPassword(), userInfo.getUsername());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(userInfo, userInfo.getPassword(), userInfo.getUsername());
         // todo 非法判断
         return info;
     }

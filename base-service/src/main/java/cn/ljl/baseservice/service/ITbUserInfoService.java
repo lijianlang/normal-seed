@@ -13,4 +13,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITbUserInfoService extends IService<TbUserInfo> {
 
+    /**
+     * 登陆
+     * @param username
+     * @param password
+     * @return
+     */
+    TbUserInfo userLogin(String username, String password);
 }

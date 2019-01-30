@@ -11,7 +11,10 @@ var vm = new Vue({
     methods:{
         onSubmit: function onSubmit() {
             var _this = this;
-            alert("username:" + _this.form.username)
+            axios.post('/login/in', _this.loginForm).then(function (result) {
+                console.log(result)
+
+            })
         }
     }
 });
