@@ -13,7 +13,7 @@
 	<groupId>cn.ljl</groupId>
 	<artifactId>base-service</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 	<name>base-service</name>
 	<description>Demo project for Spring Boot</description>
 
