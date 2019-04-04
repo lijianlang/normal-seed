@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>cn.ljl</groupId>
-		<artifactId>base-service</artifactId>
+		<artifactId>normal-seed</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../base-service/pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>cn.ljl</groupId>
 	<artifactId>normal-service</artifactId>
@@ -52,6 +52,12 @@
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
